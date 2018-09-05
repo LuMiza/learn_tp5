@@ -22,7 +22,7 @@ class Index extends Init
             'price' => 88.99,
             'date' => '2018-09-05 18:00:00',
         ];
-        header("Access-Control-Allow-Origin:*");
+//        header("Access-Control-Allow-Origin:*");//jsonp 演示的时候 不要加这个
         header('Content-Type: application/json; charset=utf-8');
         header('yoke-content: this is my thinkphp 5');
         if (isset($_GET['callback']) && !empty($_GET['callback'])) {
