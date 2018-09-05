@@ -16,6 +16,22 @@ class Index extends Init
 {
     public function index()
     {
+        $data = [
+            'name' => 'this is go to shopping',
+            'img' => 'http://www.baidu.com',
+            'price' => 88.99,
+            'date' => '2018-09-05 18:00:00',
+        ];
+        header("Access-Control-Allow-Origin:*");
+        header('Content-Type: application/json; charset=utf-8');
+        header('yoke-content: this is my thinkphp 5');
+        if (isset($_GET['callback']) && !empty($_GET['callback'])) {
+            echo $_GET['callback'] ,'(' , json_encode($data) , ')';
+        } else {
+            echo json_encode($data);
+        }
+//        return json($data);
+        exit;
         $str = "create table wx_category_tpl( 	 ct_id int(10) unsigned NOT NULL AUTO_INCREMENT  PRIMARY KEY comment '主键', 	 ct_title varchar(60) NOT NULL DEFAULT '' comment '模板命名', 	 ct_content varchar(1000) NOT NULL DEFAULT '' comment '模板内容', 	 ct_css varchar(1000) NOT NULL DEFAULT '' comment '模板css样式，', 	 ct_child varchar(1000) NOT NULL DEFAULT '' comment '子类个数', 	 ct_parent_css varchar(1000) NOT NULL DEFAULT '' comment '父类样式', 	 ct_parent_img varchar(1000) NOT NULL DEFAULT '' comment '父类图片地址', 	 ct_parent_url varchar(200) NOT NULL DEFAULT '' comment '父类的url', 	 ct_is_used tinyint(1) unsigned NOT NULL DEFAULT '0' comment '是否使用该模板：默认0【不使用】，1【使用】', 	 ct_add_time timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP comment '时间' )engine InnoDB charset utf8 comment '【福利平台】分类模板表';";
         echo SqlFormatter::format($str);
         exit;
