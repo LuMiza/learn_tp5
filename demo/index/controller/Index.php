@@ -25,8 +25,8 @@ class Index extends Init
 //        header("Access-Control-Allow-Origin:*");//jsonp 演示的时候 不要加这个
         header('Content-Type: application/json; charset=utf-8');
         header('yoke-content: this is my thinkphp 5');
-        if (isset($_GET['callback']) && !empty($_GET['callback'])) {
-            echo $_GET['callback'] ,'(' , json_encode($data) , ')';
+        if ($this->request->param('callback')) {
+            echo $this->request->param('callback') ,'(' , json_encode($data) , ');';
         } else {
             echo json_encode($data);
         }
